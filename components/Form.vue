@@ -91,11 +91,44 @@
                 name="country"
                 placeholder="* Your Country"
                 :options="[
-            { label: 'Iran', value: 'Iran'},
-            { label: 'Usa', value: 'usa'},
+            { label: 'Afghanistan', value: 'Afghanistan'},
+            { label: 'Albania', value: 'Albania'},
             { label: 'France', value: 'france'},
-            { label: 'Germany', value: 'germany'},
+            { label: 'Algeria', value: 'Algeria'},
             { label: 'Albania', value: 'albania'},
+            { label: 'Armenia', value: 'Armenia'},
+            { label: 'Australia', value: 'Australia'},
+            { label: 'Belgium', value: 'Belgium'},
+            { label: 'Brazil', value: 'Brazil'},
+            { label: 'Bulgaria', value: 'Bulgaria'},
+            { label: 'Bulgaria', value: 'Bulgaria'},
+            { label: 'Canada', value: 'Canada'},
+            { label: 'Canada', value: 'Canada'},
+            { label: 'China', value: 'China'},
+            { label: 'China', value: 'China'},
+            { label: 'Colombia', value: 'Colombia'},
+            { label: 'Denmark', value: 'Denmark'},
+            { label: 'Denmark', value: 'Denmark'},
+            { label: 'Finland', value: 'Finland'},
+            { label: 'France', value: 'Finland'},
+            { label: 'Germany', value: 'Germany'},
+            { label: 'Greece', value: 'Greece'},
+            { label: 'India', value: 'India'},
+            { label: 'Indonesia', value: 'Indonesia'},
+            { label: 'Iran', value: 'Iran'},
+            { label: 'Ireland', value: 'Ireland'},
+            { label: 'Israel', value: 'Israel'},
+            { label: 'Italy', value: 'Italy'},
+            { label: 'Japan', value: 'Japan'},
+            { label: 'Norway', value: 'Norway'},
+            { label: 'Poland', value: 'Poland'},
+            { label: 'Romania', value: 'Romania'},
+            { label: 'Saudi Arabia', value: 'Saudi Arabia'},
+            { label: 'Spain', value: 'Spain'},
+            { label: 'United Kingdom of Great Britain', value: 'United Kingdom of Great Britain'},
+            { label: 'USA', value: 'USA'},
+
+
             ]"
             />
 
