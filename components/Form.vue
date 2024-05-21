@@ -93,42 +93,104 @@
                 :options="[
             { label: 'Afghanistan', value: 'Afghanistan'},
             { label: 'Albania', value: 'Albania'},
-            { label: 'France', value: 'france'},
+            { label: 'Andorra', value: 'Andorra'},
             { label: 'Algeria', value: 'Algeria'},
+            { label: 'Angola', value: 'Angola'},
+            { label: 'Antigua and Barbuda', value: 'Antigua and Barbuda'},
+            { label: 'Argentina', value: 'Argentina'},
             { label: 'Albania', value: 'albania'},
             { label: 'Armenia', value: 'Armenia'},
             { label: 'Australia', value: 'Australia'},
+            { label: 'Austria', value: 'Austria'},
+            { label: 'Azerbaijan', value: 'Azerbaijan'},
+            { label: 'Bahrain', value: 'Bahrain'},
+            { label: 'Bangladesh', value: 'Bangladesh'},
+            { label: 'Belarus', value: 'Belarus'},
             { label: 'Belgium', value: 'Belgium'},
+            { label: 'Bolivia', value: 'Bolivia'},
+            { label: 'Bosnia and Herzegovina', value: 'Bosnia and Herzegovina'},
+            { label: 'Belize', value: 'Belize'},
+            { label: 'Bulgaria', value: 'Bulgaria'},
             { label: 'Brazil', value: 'Brazil'},
             { label: 'Bulgaria', value: 'Bulgaria'},
-            { label: 'Bulgaria', value: 'Bulgaria'},
+            { label: 'Burma', value: 'Burma'},
+            { label: 'Cameroon', value: 'Cameroon'},
             { label: 'Canada', value: 'Canada'},
-            { label: 'Canada', value: 'Canada'},
-            { label: 'China', value: 'China'},
+            { label: 'Central African Republic', value: 'Central African Republic'},
+            { label: 'Chad', value: 'Chad'},
+            { label: 'Chile', value: 'Chile'},
             { label: 'China', value: 'China'},
             { label: 'Colombia', value: 'Colombia'},
+            { label: 'Comoros', value: 'Comoros'},
+            { label: 'Costa Rica', value: 'Costa Rica'},
+            { label: 'Croatia', value: 'Croatia'},
+            { label: 'Cuba', value: 'Cuba'},
+            { label: 'Cyprus', value: 'Cyprus'},
+            { label: 'Czechia', value: 'Czechia'},
+            { label: 'Djibouti', value: 'Djibouti'},
             { label: 'Denmark', value: 'Denmark'},
             { label: 'Denmark', value: 'Denmark'},
+            { label: 'Ecuador', value: 'Ecuador'},
+            { label: 'Egypt', value: 'Egypt'},
+            { label: 'El Salvador', value: 'El Salvador'},
+            { label: 'Estonia', value: 'Estonia'},
             { label: 'Finland', value: 'Finland'},
             { label: 'France', value: 'Finland'},
+            { label: 'Georgia', value: 'Georgia'},
             { label: 'Germany', value: 'Germany'},
             { label: 'Greece', value: 'Greece'},
+            { label: 'Haiti', value: 'Haiti'},
+            { label: 'Hungary', value: 'Hungary'},
+            { label: 'Iceland', value: 'Iceland'},
             { label: 'India', value: 'India'},
             { label: 'Indonesia', value: 'Indonesia'},
             { label: 'Iran', value: 'Iran'},
+            { label: 'Iraq', value: 'Iraq'},
             { label: 'Ireland', value: 'Ireland'},
             { label: 'Israel', value: 'Israel'},
             { label: 'Italy', value: 'Italy'},
+            { label: 'Jamaica', value: 'Jamaica'},
             { label: 'Japan', value: 'Japan'},
+            { label: 'Jordan', value: 'Jordan'},
+            { label: 'Korea', value: 'Korea'},
+            { label: 'Lebanon', value: 'Lebanon'},
+            { label: 'Libya', value: 'Libya'},
+            { label: 'Luxembourg', value: 'Luxembourg'},
+            { label: 'Mali', value: 'Mali'},
+            { label: 'Mexico', value: 'Mexico'},
+            { label: 'Monaco', value: 'Monaco'},
+            { label: 'Mongolia', value: 'Mongolia'},
+            { label: 'Morocco', value: 'Morocco'},
+            { label: 'Nepal', value: 'Nepal'},
+            { label: 'Netherlands, The', value: 'Netherlands, The'},
+            { label: 'New Zealand', value: 'New Zealand'},
             { label: 'Norway', value: 'Norway'},
             { label: 'Poland', value: 'Poland'},
+            { label: 'Peru', value: 'Peru'},
+            { label: 'Philippines', value: 'Philippines'},
+            { label: 'Poland', value: 'Poland'},
+            { label: 'Portugal', value: 'Portugal'},
+            { label: 'Qatar', value: 'Qatar'},
             { label: 'Romania', value: 'Romania'},
+            { label: 'Russia', value: 'Russia'},
             { label: 'Saudi Arabia', value: 'Saudi Arabia'},
+            { label: 'Senegal', value: 'Senegal'},
+            { label: 'Serbia', value: 'Serbia'},
+            { label: 'Singapore', value: 'Singapore'},
+            { label: 'Slovakia', value: 'Slovakia'},
+            { label: 'Slovenia', value: 'Slovenia'},
+            { label: 'South Africa', value: 'South Africa'},
+            { label: 'Sweden', value: 'Sweden'},
+            { label: 'Switzerland', value: 'Switzerland'},
             { label: 'Spain', value: 'Spain'},
-            { label: 'United Kingdom of Great Britain', value: 'United Kingdom of Great Britain'},
+            { label: 'Tajikistan', value: 'Tajikistan'},
+            { label: 'Thailand', value: 'Thailand'},
+            { label: 'Turkey', value: 'Turkey'},
+            { label: 'Ukraine', value: 'Ukraine'},
+            { label: 'United Arab Emirates, The', value: 'United Arab Emirates, The'},
+            { label: 'United Kingdom ', value: 'United Kingdom '},
+            { label: 'Uruguay ', value: 'Uruguay'},
             { label: 'USA', value: 'USA'},
-
-
             ]"
             />
 
@@ -232,8 +294,6 @@
             </FormKit>
 
 
-
-
           </div>
 
         </FormKit>
@@ -263,7 +323,6 @@ const imageFlag = ref(true);
 //     },
 //   ]
 // })
-
 
 
 const sendEmailToken = (e) => {
@@ -305,10 +364,7 @@ const previewImage = (e) => {
   reader.onload = function (e) {
 
 
-
   };
-
-
 
 
   if (input.files) {
@@ -331,14 +387,9 @@ const previewImage = (e) => {
           var height = this.height;
           var width = this.width;
           console.log("this is height and width", height, width);
-          if (height > 1079 && height < 1082 && width > 1079 && width < 1082) {
-            preview.value = e.target.result;
-            imageUpload.value = input.files[0];
-            return true;
-          }else {
-            toast.error("Image Resolution is not Correct!");
-            return false;
-          }
+          preview.value = e.target.result;
+          imageUpload.value = input.files[0];
+          return true;
         };
 
       }
