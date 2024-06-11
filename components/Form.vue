@@ -238,7 +238,7 @@
 
                 <div class="w-full text-center mt-4">
                   <p class="w-full text-left">
-                    Your avatar must be in 1080 * 1080 resolution and maximum size is 3MB
+                    Maximum size is 3MB
                   </p>
                   <div id="app" class="container my-3">
                     <div class="row w-full">

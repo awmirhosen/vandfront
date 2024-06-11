@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     '@formkit/nuxt',
     'nuxt-paypal',
+    '@sidebase/nuxt-pdf',
   ],
 
   paypal: {

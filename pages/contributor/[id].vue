@@ -46,6 +46,11 @@
         Download the Post
       </div>
 
+      <div class="text-zinc-100">
+        <h1>Pay with PayPal</h1>
+        <div id="paypal-button-container"></div>
+      </div>
+
 <!--      <div class="w-full border border-zinc-100 rounded-md py-3 mt-2 bg-inherit text-white cursor-pointer mt-8 mb-20">-->
 <!--        Your Design Oath Certificate-->
 <!--      </div>-->
@@ -67,6 +72,7 @@
 <script setup>
 
 import {useFormStore} from "../../store/form.js";
+import {onMounted} from "vue";
 
 const formStore = useFormStore();
 
@@ -104,9 +110,46 @@ const downloadCerti = () => {
 
 }
 
+const initializePayPalButton = () => {
+  paypal.Buttons({
+    createOrder: (data, actions) => {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '30.00', // مبلغ ثابت
+            currency_code: 'EUR'
+          }
+        }]
+      })
+    },
+    onApprove: (data, actions) => {
+      return actions.order.capture().then(details => {
+        alert('Transaction completed by ' + details.payer.name.given_name)
+        console.log("ina chie", details, data,)
+      })
+    },
+    onError: (err) => {
+      console.error(err)
+    }
+  }).render('#paypal-button-container')
+}
+
+
+
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://www.paypal.com/sdk/js?client-id=AXlo3BonIU04buXObrK_QVdWZ18lU_9l5K4fO3aza7tgQkGlxaPaf8uNihU0DSVRDC2uqv9CuVjcNKFx&currency=EUR'
+  script.addEventListener('load', initializePayPalButton)
+  document.body.appendChild(script)
+})
+
+
+
+
+
 </script>
 
-<style scoped>
+<style>
 
 @font-face {
   font-family: "Playfair Display";
