@@ -24,7 +24,7 @@ export const useFormStore = defineStore("form", () => {
     firstName: "",
     lastName: "",
     email: "",
-    avatar: "",
+    avatar: null,
     category: "",
     country: "",
     experienceYears: "",
@@ -83,7 +83,9 @@ export const useFormStore = defineStore("form", () => {
       formDataInstance.append("country", formData.country);
       formDataInstance.append("email", formData.email);
       formDataInstance.append("invited_by", formData.invitationCode);
-      formDataInstance.append("avatar", avatar);
+      if (avatar != undefined) {
+        formDataInstance.append("avatar", avatar);
+      }
       await $fetch("/api/users/create-user", {
         method: "POST",
         body: formDataInstance,

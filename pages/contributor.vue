@@ -11,7 +11,7 @@
         <div class="relative my-10 z-10"
              id="container">
 
-          <div v-if="formStore.userData.avatar !== ''">
+          <div v-if="formStore.userData.avatar">
             <img :src="'http://202.133.88.224:8002/storage/' + formStore.userData.avatar"
                  class="max-w-[1080px] w-full"
                  alt="avatar-watermark" />

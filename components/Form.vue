@@ -343,6 +343,7 @@
       </div>
 
     </div>
+
   </div>
 
 </template>
@@ -358,7 +359,6 @@ const preview = ref(null);
 const imageUpload = ref(null);
 const upload = ref(null);
 const formStore = useFormStore();
-const imageFlag = ref(true);
 
 // send email token
 const sendEmailToken = async () => {
