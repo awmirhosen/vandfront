@@ -10,11 +10,9 @@ export default defineEventHandler(async (event) => {
     });
     setCookie(event, "user_id", request.id, {
       httpOnly: true,
-      secure: true,
+      secure: false,
       maxAge: 60 * 60 * 24 * 7,
       path: "/",
-      priority: "high",
-      sameSite: "strict",
     });
     return request;
   } catch (error) {
