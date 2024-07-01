@@ -147,7 +147,7 @@ onMounted(async () => {
 
   try {
     paypal = await loadScript({
-      "clientId": "AXlo3BonIU04buXObrK_QVdWZ18lU_9l5K4fO3aza7tgQkGlxaPaf8uNihU0DSVRDC2uqv9CuVjcNKFx",
+      "clientId": "AU_A_5LtKYvtQF7deCmntW-NJD1iyEA1sMQGBKZoR0c744v7pLC7FQPthoOzNlkHbi-SpGx2W_EGzswj",
       "currency": "EUR"
     });
   } catch (err) {

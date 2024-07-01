@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@sidebase/nuxt-pdf": "^1.0.0-alpha.0",
-    "nuxt-paypal": "^0.0.1-beta",
-    "sass": "^1.71.1"
+    "nuxt-paypal": "^0.0.1-beta"
   }
 }
