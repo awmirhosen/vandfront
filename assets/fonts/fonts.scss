@@ -1,0 +1,19 @@
+@font-face {
+  font-family: lagu;
+  font-style: normal;
+  src: url("Lagu-Sans-Regular.otf") format("otf");
+}
+
+@font-face {
+  font-family: playfair;
+  font-style: normal;
+  src: url("PlayfairDisplay-Regular.ttf") format("ttf");
+}
+
+.font-playfair {
+  font-family: playfair !important;
+}
+
+.font-lagu {
+  font-family: lagu !important;
+}

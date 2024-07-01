@@ -39,9 +39,8 @@
     </div>
 
     <!-- form -->
-    <v-row class="ga-4 my-10">
-
-      <v-form ref="sumbit_form">
+    <v-form ref="sumbit_form">
+      <v-row class="ga-4 my-10">
 
         <!-- firstname -->
         <v-col cols="12">
@@ -317,9 +316,9 @@
           </v-btn>
         </v-col>
 
-      </v-form>
+      </v-row>
 
-    </v-row>
+    </v-form>
 
   </v-container>
 
