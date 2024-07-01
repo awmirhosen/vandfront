@@ -9,7 +9,7 @@ export const useFormStore = defineStore("form", () => {
   const formData = reactive({
     firstName: "",
     surename: "",
-    discipline: 0,
+    discipline: "",
     yearsExperience: "",
     country: "",
     email: "",
@@ -40,10 +40,10 @@ export const useFormStore = defineStore("form", () => {
         body: { email: formData.email },
       });
       if (!request.error) {
-        shareStore.setToast("Email sent successfully");
+        shareStore.showSnackBar("Email sent successfully");
       }
     } catch (error) {
-      shareStore.setToast(error.data.data.message, true);
+      shareStore.showSnackBar(error.data.data.message);
     } finally {
       shareStore.clearProcess();
     }
@@ -65,7 +65,7 @@ export const useFormStore = defineStore("form", () => {
     } catch (error) {
       shareStore.setErrorResponse();
       if (error.statusCode === 400) {
-        shareStore.setToast("Token Email is Not Valid!", true);
+        shareStore.showSnackBar("Token Email is Not Valid!");
       }
     } finally {
       shareStore.clearProcess();
@@ -92,7 +92,7 @@ export const useFormStore = defineStore("form", () => {
       });
       return navigateTo("/contributor");
     } catch (error) {
-      shareStore.setToast(error.data.data.message, true);
+      shareStore.showSnackBar(error.data.data.message);
     } finally {
       shareStore.clearProcess();
     }
@@ -134,8 +134,7 @@ export const useFormStore = defineStore("form", () => {
         },
       });
     } catch (error) {
-      shareStore.setToast(error.data.data.message, true);
-      console.log(error);
+      shareStore.showSnackBar(error.data.data.message);
     } finally {
       shareStore.clearProcess();
     }

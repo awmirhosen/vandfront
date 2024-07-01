@@ -1,14 +1,18 @@
 import { defineStore } from "pinia";
-import { useToast } from "vue-toastification";
+//import { useToast } from "vue-toastification";
 
 export const useShareStore = defineStore("share", () => {
-  // use toast
-  const toast = useToast();
-
   // process
   const process = reactive({
     isProgress: false,
     action: "",
+  });
+
+  //snakebar data
+  const snackBar = reactive({
+    show: false,
+    message: "",
+    data: "",
   });
 
   // error responses
@@ -47,21 +51,27 @@ export const useShareStore = defineStore("share", () => {
     errorResponse.error = false;
   }
 
-  function setToast(message, error = false) {
-    if (error) {
-      toast.error(message);
-    } else {
-      toast.success(message);
-    }
+  function showSnackBar(message, data = "") {
+    snackBar.show = true;
+    snackBar.message = message;
+    snackBar.data = data;
+  }
+
+  function closeSnackBar() {
+    snackBar.show = false;
+    snackBar.message = "";
+    snackBar.data = "";
   }
 
   return {
+    showSnackBar,
+    closeSnackBar,
+    snackBar,
     process,
     errorResponse,
     setProcess,
     actionProcess,
     clearProcess,
-    setToast,
     setErrorResponse,
     clearErrorResponse,
     errorResponse,

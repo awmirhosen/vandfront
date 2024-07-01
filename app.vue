@@ -1,5 +1,6 @@
 <template>
   <div>
-    <NuxtPage/>
+    <SnackBar />
+    <NuxtPage />
   </div>
 </template>

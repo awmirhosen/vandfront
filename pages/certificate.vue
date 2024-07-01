@@ -1,34 +1,106 @@
 <template>
-  <div class="w-full min-h-screen bg-[#101010]"
-       style="background-image: url('/vandbg.svg')">
 
-    <div class="pt-20 flex w-full flex justify-center">
-      <div class="text-center">
-        <p class="text-[34px] text-zinc-200 font-bold">Congratulations!
-          <br>
-          Here is your Certificate!
-        </p>
+  <v-parallax src="/vandbg.svg"
+              style="background-color: #101010">
 
+
+    <v-container class="w-100 w-md-50 my-15">
+
+      <v-row>
+
+        <v-col cols="12">
+          <p class="text-h4 text-white font-weight-bold text-center mb-3">Congratulations!</p>
+          <p class="text-h4 text-white font-weight-bold text-center">Here is your Certificate!</p>
+        </v-col>
+
+      </v-row>
+
+      <div ref="container"
+           class="d-flex align-center flex-column">
+        <v-card variant="elevated"
+                height="600"
+                color="black"
+                flat
+                rounded="0"
+                class="w-100 w-md-50 my-10 d-flex flex-column">
+
+          <div class="h-100 mt-5 ms-5">
+
+            <div class="d-flex flex-column">
+
+              <v-img :width="50"
+                     style="margin-left: -10px;"
+                     src="/gray_vand.png" />
+
+              <p class="text-caption font-playfair">Certificate</p>
+              <p class="text-caption font-playfair">of Professional</p>
+              <p class="text-caption font-playfair">Oath</p>
+            </div>
+
+          </div>
+
+          <div class="h-100">
+
+            <div class="d-flex flex-column h-100 justify-end ms-5">
+
+              <p class="text-body-2 mb-0 font-playfair">{{ formStore.userData.firstName }}</p>
+
+              <p class="text-body-2 mb-2 font-playfair">{{ formStore.userData.lastName }}</p>
+
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">as a verified designer,</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">has commited the</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">proffesional oath in design.</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">the commitment</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">signifies recognition</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">of and commitment to</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">ethical and</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">professional principles</p>
+              <p class="text-caption text-grey-lighten-1 mb-0 font-playfair">and standards.</p>
+
+            </div>
+
+          </div>
+
+          <div class="h-100">
+            <div class="d-flex flex-column h-100 justify-end ms-5">
+
+              <v-img :width="120"
+                     style="margin-bottom: -60px;"
+                     src="/sign.png" />
+
+              <p class="text-caption text-grey-lighten-1 mb-0">VANDINTERNATIONAL</p>
+              <p class="text-caption text-grey-lighten-1 mb-5">vandorg.com</p>
+
+            </div>
+          </div>
+
+        </v-card>
       </div>
-    </div>
 
-    <div class="w-full max-w-[600px] h-auto overflow-x-scroll overflow-y-visible mx-auto mt-10 bg-black"
-         id="style-1">
-      <div ref="pdfSection"
-           style="margin: auto"
-           class="bg-black w-[453px] h-[637.2px]">
-        <TestingStage />
+      <div class="d-flex align-center flex-column">
+        <v-btn variant="flat"
+               rounded="10"
+               size="large"
+               class="w-100 w-md-50 text-center"
+               @click="exportToPDF('pdf_export.pdf', $refs.container, options, {
+                html2canvas: {
+                  useCORS: true,
+                  scale: 1.052,
+                  onclone: function async(doc, element) {
+                    element.firstElementChild.className = '';
+                    element.firstElementChild.firstElementChild.classList.remove('my-10');
+                  }
+                }
+              })"
+               color="white">
+          Download Certificate
+        </v-btn>
       </div>
-    </div>
 
-    <div class="flex justify-center mt-8">
-      <button class="text-white px-10 py-4 rounded-md bg-zinc-900 hover:bg-zinc-700 transition-all min-w-[400px] mb-10"
-              @click="exportToPDF('pdf_export.pdf', pdfSection, options, { html2canvas: { scale: 0.99, useCORS: true } })">
-        Download Certificate
-      </button>
-    </div>
+    </v-container>
 
-  </div>
+  </v-parallax>
+
 </template>
 
 <script setup>
@@ -36,59 +108,9 @@ import { useFormStore } from "../../store/form.js";
 
 const formStore = useFormStore();
 
-const { $html2canvas } = useNuxtApp();
-
-const pdfSection = ref(null)
-
 const options = {
   orientation: 'p',
   format: "a4"
 }
 
 </script>
-
-<style scoped>
-@font-face {
-  font-family: "Playfair Display";
-  src: url("../../public/PlayfairDisplay-Regular.ttf");
-}
-
-
-
-@font-face {
-  font-family: "lagu";
-  src: url("../../public/Lagu Sans Regular Italic.otf");
-}
-
-.font-playfair {
-  font-family: "Playfair Display";
-}
-
-.font-lagu {
-  font-family: "lagu";
-}
-
-
-#style-1::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
-  background-color: #F5F5F5;
-}
-
-#style-1::-webkit-scrollbar {
-  background-color: #F5F5F5;
-  border-radius: 3px;
-  width: 4px;
-  height: 4px;
-}
-
-#style-1::-webkit-scrollbar-corner {
-  background: white;
-}
-
-#style-1::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-  background-color: #1f1f1f;
-}
-</style>

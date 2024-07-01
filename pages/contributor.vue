@@ -1,83 +1,113 @@
 <template>
-  <div class="w-full min-h-screen bg-[#101010]"
-       style="background-image: url('/vandbg.svg')">
 
-    <div class="pt-20 flex w-full flex justify-center">
-      <div class="text-center">
-        <p class="text-[34px] text-zinc-200 font-bold">Congratulations!</p>
-        <p class="text-[24px] text-zinc-200">{{ formStore.userData.firstName + ' ' + formStore.userData.lastName }}</p>
+  <v-parallax src="/vandbg.svg"
+              style="background-color: #101010">
+
+    <v-container class="w-100 w-md-50 my-15">
+
+      <v-row>
+
+        <v-col cols="12">
+          <p class="text-h4 text-white font-weight-bold text-center mb-3">Congratulations!</p>
+          <p class="text-h5 text-white text-center">{{ formStore.userData.firstName + ' ' + formStore.userData.lastName }}</p>
+        </v-col>
+
+      </v-row>
 
 
-        <div class="relative my-10 z-10"
-             id="container">
+      <v-card id="container"
+              width="1080"
+              height="750"
+              variant="elevated"
+              color="black"
+              flat
+              rounded="0"
+              class="w-100 my-10 d-flex flex-column">
 
-          <div v-if="formStore.userData.avatar">
-            <img :src="'http://202.133.88.224:8002/storage/' + formStore.userData.avatar"
-                 class="max-w-[1080px] w-full"
-                 alt="avatar-watermark" />
-          </div>
+        <template v-slot:image
+                  v-if="formStore.userData.avatar">
+          <v-img :src="'http://202.133.88.224:8002/storage/' + formStore.userData.avatar"
+                 class="opacity-20"
+                 cover />
+        </template>
 
-          <div v-else>
-            <img src="/null_avatar.jpg"
-                 class="max-w-[1080px] w-full"
-                 alt="avatar-watermark" />
-          </div>
+        <div class="h-100 mt-16 ms-5">
 
-          <div class="absolute z-10 top-[10%] left-4">
-            <img src="/vand_post_logo.png"
-                 width="122"
-                 alt="">
-            <p class="text-white text-left mt-4 font-playfair text-[40px]">Certificate
-              <br>
-              of Professional
-              <br>
-              Oath
-            </p>
-          </div>
-          <div class="w-full h-full absolute top-0 items-center"
-               style="background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8))"></div>
+          <div class="d-flex flex-column ga-1">
 
-          <div class="absolute bottom-[10%] left-4 text-white">
-            <p class="font-playfair text-[38px] text-left">
-              {{ formStore.userData.firstName }}
-              <br>
-              {{ formStore.userData.lastName }}
-            </p>
-            <p class="text-left font-playfair text-xl">
-              as a verified designer.has <br>
-              signed the professional <br>
-              oath in design
-            </p>
+            <v-img :width="122"
+                   src="/vand_post_logo.png" />
 
-            <p class="text-left my-8 font-playfair text-xl">VAND.ORG</p>
+            <p class="text-h4 font-playfair">Certificate</p>
+
+            <p class="text-h4 font-playfair">of Professional</p>
+
+            <p class="text-h4 font-playfair">Oath</p>
 
           </div>
 
         </div>
 
+        <div class="h-100">
 
-        <div class="w-full py-3 font-[500] rounded-md mt-2 bg-white text-black cursor-pointer mb-10"
-             @click.prevent="downloadCerti">
-          Download the Post
+          <div class="d-flex flex-column h-100 justify-end ms-5">
+
+            <p class="text-h4 mb-0 font-playfair">{{ formStore.userData.firstName }}</p>
+
+            <p class="text-h4 mb-5 font-playfair">{{ formStore.userData.lastName }}</p>
+
+            <p class="text-body-1 font-playfair">as a verified designer.has</p>
+
+            <p class="text-body-1 font-playfair">signed the professional</p>
+
+            <p class="text-body-1 mb-5 font-playfair">oath in design</p>
+
+            <p class="text-h6 mb-16 font-playfair">VAND.ORG</p>
+
+          </div>
+
         </div>
 
-        <div v-if="!formStore.userData.certificate">
-          <div ref="paypalButton"></div>
+      </v-card>
+
+
+      <v-btn variant="flat"
+             rounded="10"
+             size="large"
+             class="w-100"
+             @click.prevent="downloadCerti"
+             color="white">
+        Download the Post
+      </v-btn>
+
+
+      <div v-if="!formStore.userData.certificate"
+           class="d-flex flex-column mt-10 ga-10">
+
+        <div class="text-h6 text-white  align-self-center">
+          Payment for the certificate
         </div>
 
-        <div v-else
-             class="w-full py-3 font-[500] rounded-md mt-2 bg-white text-black cursor-pointer mb-10">
-          <NuxtLink to="/certificate">
-            Show Certificate
-          </NuxtLink>
-        </div>
-
+        <div class="align-self-center w-75"
+             ref="paypalButton"></div>
 
       </div>
 
-    </div>
+      <div v-else>
+        <v-btn variant="flat"
+               rounded="10"
+               size="large"
+               class="w-100 mt-5"
+               to="/certificate"
+               color="white">
+          Show Certificate
+        </v-btn>
+      </div>
 
-  </div>
+    </v-container>
+
+  </v-parallax>
+
 </template>
 
 <script setup>
@@ -96,10 +126,15 @@ const { $html2canvas } = useNuxtApp();
 const downloadCerti = () => {
 
   $html2canvas(document.getElementById("container"), {
-    proxy: "http://localhost:3000",
+    useCORS: true,
+    onclone: function async(doc, element) {
+      element.style.width = '1080px';
+      element.style.height = '1080px';
+      element.classList.remove("w-100");
+    }
   }).then(function (canvas) {
     var a = document.createElement("a");
-    a.href = canvas.toDataURL("image/png");
+    a.href = canvas.toDataURL("image/jpg");
     a.download = 'avatar.jpg';
     a.click();
   })
@@ -147,7 +182,7 @@ onMounted(async () => {
           });
         },
         onCancel: () => {
-          shareStore.setToast("PayPal is Cancelled!", true)
+          shareStore.showSnackBar("PayPal is Cancelled!")
         },
         onError: (err) => {
           console.error(err);
@@ -161,23 +196,3 @@ onMounted(async () => {
 });
 
 </script>
-
-<style>
-@font-face {
-  font-family: "Playfair Display";
-  src: url("../../public/PlayfairDisplay-Regular.ttf");
-}
-
-@font-face {
-  font-family: "lagu";
-  src: url("../../public/Lagu Sans Regular Italic.otf");
-}
-
-.font-playfair {
-  font-family: "Playfair Display";
-}
-
-.font-lagu {
-  font-family: "lagu";
-}
-</style>
