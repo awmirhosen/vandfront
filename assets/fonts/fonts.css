@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("assets/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400; /* عادی */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("assets/fonts/PlayfairDisplay/PlayfairDisplay-Italic.ttf") format("truetype");
+  font-weight: 400; /* عادی */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("assets/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf") format("truetype");
+  font-weight: 700; /* بولد */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("assets/fonts/PlayfairDisplay/PlayfairDisplay-BoldItalic.ttf") format("truetype");
+  font-weight: 700; /* بولد */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("assets/fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf") format("truetype");
+  font-weight: 900; /* بلک */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("assets/fonts/PlayfairDisplay/PlayfairDisplay-BlackItalic.ttf") format("truetype");
+  font-weight: 900; /* بلک */
+  font-style: italic;
+}
+
+.font-playfair {
+  font-family: "PlayfairDisplay" !important;
+}

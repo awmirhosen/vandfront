@@ -27,42 +27,55 @@
         <template v-slot:image
                   v-if="formStore.userData.avatar">
           <v-img :src="'http://202.133.88.224:8002/storage/' + formStore.userData.avatar"
-                 class="opacity-20"
+                 class="opacity-90"
                  cover />
         </template>
 
-        <div class="h-100 mt-16 ms-5">
+        <div class="h-100 ms-3">
 
-          <div class="d-flex flex-column ga-1">
+          <div style="height: 100px;"></div>
 
-            <v-img :width="122"
+          <div class="d-flex flex-column">
+
+            <v-img :width="100"
+                   :style="!formStore.userData.avatar ? 'filter: brightness(0.5);' : ''"
+                   class="mb-7"
                    src="/vand_post_logo.png" />
 
-            <p class="text-h4 font-playfair">Certificate</p>
+            <span class="text-h3 font-playfair"
+                  style="letter-spacing: -3px !important;">Certificate</span>
 
-            <p class="text-h4 font-playfair">of Professional</p>
+            <span class="text-h3 font-playfair"
+                  style="margin-top: -3px;letter-spacing: -3px !important;">of Professional</span>
 
-            <p class="text-h4 font-playfair">Oath</p>
+            <span class="text-h3 font-playfair"
+                  style="margin-top: -3px;letter-spacing: -3px !important;">Oath</span>
 
           </div>
 
         </div>
 
-        <div class="h-100">
+        <div class="h-100 ms-3">
 
-          <div class="d-flex flex-column h-100 justify-end ms-5">
+          <div class="d-flex flex-column h-100 justify-end ">
 
-            <p class="text-h4 mb-0 font-playfair">{{ formStore.userData.firstName }}</p>
+            <p class="text-h2 mb-0 font-playfair"
+               style="margin-top: -3px;letter-spacing: -3px !important;">{{ formStore.userData.firstName }}</p>
 
-            <p class="text-h4 mb-5 font-playfair">{{ formStore.userData.lastName }}</p>
+            <p class="text-h2 mb-5 font-playfair"
+               style="margin-top: -10px;letter-spacing: -3px !important;">{{ formStore.userData.lastName }}</p>
 
-            <p class="text-body-1 font-playfair">as a verified designer.has</p>
+            <p class="text-h6 font-playfair"
+               style="margin-top: -15px;letter-spacing: 0px !important;">as a verified designer.has</p>
 
-            <p class="text-body-1 font-playfair">signed the professional</p>
+            <p class="text-h6 font-playfair"
+               style="margin-top: -8px;letter-spacing: 0px !important;">signed the professional</p>
 
-            <p class="text-body-1 mb-5 font-playfair">oath in design</p>
+            <p class="text-h6 mb-5 font-playfair"
+               style="margin-top: -8px;letter-spacing: 0px !important;">oath in design.</p>
 
-            <p class="text-h6 mb-16 font-playfair">VAND.ORG</p>
+            <p class="text-h5 mb-16 mt-5 font-playfair"
+               style="letter-spacing: -1px !important;">VAND.ORG</p>
 
           </div>
 
@@ -128,8 +141,8 @@ const downloadCerti = () => {
   $html2canvas(document.getElementById("container"), {
     useCORS: true,
     onclone: function async(doc, element) {
-      element.style.width = '1080px';
-      element.style.height = '1080px';
+      element.style.width = '800px';
+      element.style.height = '800px';
       element.classList.remove("w-100");
     }
   }).then(function (canvas) {

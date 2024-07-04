@@ -30,6 +30,7 @@ export const useFormStore = defineStore("form", () => {
     experienceYears: "",
     invitedBy: "",
     certificate: null,
+    createdAt: "",
   });
 
   async function sendEmailVerifictation() {
@@ -116,6 +117,7 @@ export const useFormStore = defineStore("form", () => {
       userData.experienceYears = request.experience_years;
       userData.invitedBy = request.invited_by;
       userData.certificate = request.certificate;
+      userData.createdAt = request.created_at;
     } catch (error) {
     } finally {
       shareStore.clearProcess();
